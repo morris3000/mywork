@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台式蚵仔麵線商業計畫書 v4</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; font-size: 16px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; }
+        .header { background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%); color: white; padding: 30px 20px; text-align: center; }
+        .header h1 { font-size: 24px; margin-bottom: 10px; }
+        .header .version { font-size: 12px; opacity: 0.8; margin-top: 5px; }
+        .nav { background: #fff; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 100; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .nav-list { display: flex; padding: 0; list-style: none; margin: 0; }
+        .nav-list li { flex-shrink: 0; }
+        .nav-list a { display: block; padding: 15px 20px; color: #666; text-decoration: none; border-bottom: 3px solid transparent; transition: all 0.3s; font-size: 14px; cursor: pointer; }
+        .nav-list a:hover, .nav-list a.active { color: #ff6b35; border-bottom-color: #ff6b35; }
+        .content { padding: 20px; }
+        .section { margin-bottom: 40px; }
+        .section-title { font-size: 22px; color: #ff6b35; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #ff6b35; }
+        .section-subtitle { font-size: 18px; color: #333; margin: 20px 0 15px 0; padding-left: 10px; border-left: 3px solid #ff8c42; }
+        .card { background: #fff; border-radius: 8px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .card-title { font-size: 16px; font-weight: 600; color: #333; margin-bottom: 10px; display: flex; align-items: center; }
+        .card-title::before { content: ""; width: 4px; height: 16px; background: #ff6b35; margin-right: 8px; flex-shrink: 0; }
+        .highlight-box { background: #fff3e0; border-left: 4px solid #ff6b35; padding: 15px; margin: 15px 0; border-radius: 4px; }
+        .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 15px 0; }
+        @media (max-width: 480px) { .info-grid { grid-template-columns: 1fr; } }
+        .info-item { background: #f8f9fa; padding: 12px; border-radius: 6px; border-left: 3px solid #ff6b35; }
+        .info-label { font-size: 13px; color: #888; margin-bottom: 5px; }
+        .info-value { font-size: 16px; font-weight: 600; color: #333; }
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 13px; margin: 5px 5px 5px 0; }
+        .tag-success { background: #d4edda; color: #155724; }
+        .tag-warning { background: #fff3cd; color: #856404; }
+        .tag-danger { background: #f8d7da; color: #721c24; }
+        .tag-primary { background: #cce5ff; color: #004085; }
+        .tag-star { background: #ff6b35; color: white; }
+        .tag-anchor { background: #e0e0e0; color: #555; }
+        ul { padding-left: 20px; margin: 10px 0; }
+        li { margin: 8px 0; line-height: 1.6; }
+        .product-card { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); border: 2px solid transparent; }
+        .product-card.flagship { border-color: #ff6b35; background: linear-gradient(135deg, #fff 0%, #fff8f5 100%); }
+        .product-card.anchor { border-color: #e0e0e0; background: #fafafa; }
+        .product-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .product-name { font-size: 18px; font-weight: 600; color: #333; }
+        .product-price { font-size: 24px; font-weight: 700; color: #ff6b35; }
+        .product-details { font-size: 14px; color: #666; margin-bottom: 10px; }
+        .product-metrics { display: flex; gap: 15px; font-size: 13px; color: #888; padding-top: 10px; border-top: 1px dashed #e0e0e0; }
+        .metric { display: flex; align-items: center; gap: 5px; }
+        .metric-value { font-weight: 600; color: #28a745; }
+        .strategy-box { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px; padding: 20px; margin: 20px 0; }
+        .strategy-box h3 { margin-bottom: 15px; font-size: 18px; }
+        .strategy-box p { margin: 10px 0; line-height: 1.8; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+        .comparison-table th, .comparison-table td { padding: 12px 10px; text-align: left; border-bottom: 1px solid #e0e0e0; }
+        .comparison-table th { background: #f8f9fa; font-weight: 600; color: #666; }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .metric-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+        .metric-row:last-child { border-bottom: none; }
+        .metric-label { color: #666; }
+        .metric-value-text { font-weight: 600; color: #333; }
+        .timeline { position: relative; padding-left: 20px; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #ff6b35; border-radius: 3px; }
+        .timeline-item { position: relative; margin-bottom: 20px; }
+        .timeline-item::before { content: ''; position: absolute; left: -24px; top: 20px; width: 12px; height: 12px; background: #ff6b35; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px #ff6b35; }
+        .update-note { background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px; padding: 12px 15px; margin: 10px 0; font-size: 14px; color: #2e7d32; }
+        .update-note::before { content: "✓ 策略"; font-weight: 600; margin-right: 8px; }
+        .delivery-box { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; border-radius: 12px; padding: 20px; margin: 20px 0; }
+        .delivery-box h3 { margin-bottom: 15px; font-size: 18px; }
+        .delivery-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; background: rgba(255,255,255,0.15); border-radius: 8px; overflow: hidden; }
+        .delivery-table th, .delivery-table td { padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.2); }
+        .delivery-table th { background: rgba(255,255,255,0.1); }
+        .delivery-table tr:last-child td { border-bottom: none; }
+        .loyalty-box { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 12px; padding: 20px; margin: 20px 0; }
+        .loyalty-box h3 { margin-bottom: 15px; font-size: 18px; }
+        .location-card { border-left: 4px solid #28a745; background: #f8fff8; padding: 15px; margin: 10px 0; border-radius: 4px; }
+        .location-card.warning { border-left-color: #ffc107; background: #fffef5; }
+        .location-card.danger { border-left-color: #dc3545; background: #fff8f8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>台式蚵仔麵線福州市場商業計畫書</h1>
+            <p>福州首家台灣正宗蚵仔麵線專賣店</p>
+            <p class="version">v4.0 - 完整營運版</p>
+        </div>
+        
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a class="nav-link" data-target="executive">執行摘要</a></li>
+                <li><a class="nav-link" data-target="market">市場分析</a></li>
+                <li><a class="nav-link" data-target="product">產品規劃</a></li>
+                <li><a class="nav-link" data-target="finance">財務預估</a></li>
+                <li><a class="nav-link" data-target="operation">運營規劃</a></li>
+                <li><a class="nav-link" data-target="marketing">營銷策略</a></li>
+                <li><a class="nav-link" data-target="risk">風險評估</a></li>
+                <li><a class="nav-link" data-target="timeline">執行時間表</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <!-- 執行摘要 -->
+            <section id="executive" class="section">
+                <h2 class="section-title">一、執行摘要</h2>
+                
+                <div class="card">
+                    <div class="card-title">願景與目標</div>
+                    <div class="card-content">
+                        <p>在福建福州開設台式蚵仔麵線連鎖餐飲店，以「台灣紅麵線 + 新鮮蚵仔」的差異化組合，填補福州市場空白，打造具有台灣特色的平價美食品牌。</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">核心競爭優勢</div>
+                    <div class="card-content">
+                        <div class="tag tag-success">福州首家</div>
+                        <div class="tag tag-success">成本可控</div>
+                        <div class="tag tag-success">團隊實力</div>
+                        <div class="tag tag-success">產品驗證</div>
+                        <ul>
+                            <li><strong>產品已在台灣驗證數十年</strong>，屬於台灣國民美食</li>
+                            <li>福州約15家麵線糊店均為白麵線，無台式紅麵線</li>
+                            <li>蚵仔在福州供應充足且便宜（批發價¥20-24/kg）</li>
+                            <li>20年台灣餐飲連鎖經驗，45年資深廚師坐鎮</li>
+                            <li>紅麵線與白麵線有視覺差異，辨識度高</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3 style="margin-bottom: 15px;">財務目標</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">首店投資</div>
+                            <div class="info-value">¥99,000</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">回本週期</div>
+                            <div class="info-value">7.2個月</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">穩定期月淨利</div>
+                            <div class="info-value">¥13,800</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">淨利率</div>
+                            <div class="info-value">25.2%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">產品策略摘要</div>
+                    <div class="card-content">
+                        <p><strong>極簡菜單：</strong>4個主品類 × 2個規格 = 8個SKU</p>
+                        <ul>
+                            <li>清麵線¥10/¥13：價格錨點，建立「便宜」印象</li>
+                            <li>蚵仔麵線¥15/¥19：經典口味</li>
+                            <li>大腸麵線¥16/¥21：保險款，福州熟悉口味</li>
+                            <li><strong>綜合麵線¥18/¥23：招牌主推，口味最豐富</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 市場分析 -->
+            <section id="market" class="section">
+                <h2 class="section-title">二、市場分析</h2>
+                
+                <div class="card">
+                    <div class="card-title">目標市場</div>
+                    <div class="card-content">
+                        <p><strong>地理位置：</strong>福建省福州市</p>
+                        <p><strong>首店選址：</strong>社區底商、美食街檔口</p>
+                        <p><strong>核心客群：</strong>25-45歲上班族、年輕家庭（60%）</p>
+                        <p><strong>次要客群：</strong>學生群體（25%）、老年人（15%）</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">競爭環境</div>
+                    <div class="card-content">
+                        <p><strong>泉州麵線糊（直接競品）：</strong></p>
+                        <ul>
+                            <li>店鋪數量：約15家</li>
+                            <li>產品特點：白麵線、清湯</li>
+                            <li>價格區間：¥7.9-30.9</li>
+                            <li>人均消費：¥17-20</li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>撈化（間接競品）：</strong></p>
+                        <p>撈化大量使用蚵仔且受歡迎，證明福州人熟悉並喜愛蚵仔。價格¥20.8-28.8。</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3 style="margin-bottom: 10px;">市場機會</h3>
+                    <ul>
+                        <li>✅ 麵線糊在福州已被接受（15家店證明品類可行）</li>
+                        <li>✅ 蚵仔是福州熱門食材，供應鏈成熟且成本低</li>
+                        <li>✅ 台式紅麵線蚵仔麵線市場完全空白（先行者優勢）</li>
+                        <li>✅ 消費者願意為差異化產品支付溢價</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- 產品規劃 -->
+            <section id="product" class="section">
+                <h2 class="section-title">三、產品規劃</h2>
+                
+                <div class="strategy-box">
+                    <h3>🎯 定價策略：錨定效應 + 綜合主推</h3>
+                    <p>用¥10清麵線建立「這家店很便宜」的第一印象，再用綜合大碗¥23的豐富口味作為主推。</p>
+                    <p><strong>核心邏輯：</strong>蚵仔大碗¥19 vs 綜合普通¥18 → 顧客想「差不多價錢，綜合還能吃兩種」→ 再推「大碗才多¥5」→ 成交¥23</p>
+                </div>
+                
+                <h3 class="section-subtitle">價格錨點：清麵線</h3>
+                
+                <div class="product-card anchor">
+                    <div class="product-header">
+                        <div>
+                            <div class="product-name">清麵線（普通碗）</div>
+                            <span class="tag tag-anchor">💡 價格錨點</span>
+                        </div>
+                        <div class="product-price">¥10</div>
+                    </div>
+                    <div class="product-details">台灣紅麵線90g + 濃稠勾芡湯頭250ml + 香菜蒜泥</div>
+                    <div class="product-metrics">
+                        <div class="metric">食材成本：<span class="metric-value">¥1.80</span></div>
+                        <div class="metric">毛利率：<span class="metric-value">82%</span></div>
+                    </div>
+                </div>
+                
+                <div class="product-card anchor">
+                    <div class="product-header">
+                        <div><div class="product-name">清麵線（大碗）</div></div>
+                        <div class="product-price">¥13</div>
+                    </div>
+                    <div class="product-details">台灣紅麵線140g + 濃稠勾芡湯頭350ml + 香菜蒜泥</div>
+                    <div class="product-metrics">
+                        <div class="metric">食材成本：<span class="metric-value">¥2.40</span></div>
+                        <div class="metric">毛利率：<span class="metric-value">82%</span></div>
+                    </div>
+                </div>
+                
+                <h3 class="section-subtitle">經典口味：蚵仔麵線</h3>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <div><div class="product-name">蚵仔麵線（普通碗）</div></div>
+                        <div class="product-price">¥15</div>
+                    </div>
+                    <div class="product-details">台灣紅麵線90g + 新鮮蚵仔50g + 濃稠勾芡湯頭250ml</div>
+                    <div class="product-metrics">
+                        <div class="metric">食材成本：<span class="metric-value">¥4.80</span></div>
+                        <div class="metric">毛利率：<span class="metric-value">68%</span></div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <div><div class="product-name">蚵仔麵線（大碗）</div></div>
+                        <div class="product-price">¥19</div>
+                    </div>
+                    <div class="product-details">台灣紅麵線140g + 新鮮蚵仔80g + 濃稠勾芡湯頭350ml</div>
+                    <div class="product-metrics">
+                        <div class="metric">食材成本：<span class="metric-value">¥6.48</span></div>
+                        <div class="metric">毛利率：<span class="metric-value">66%</span></div>
+                    </div>
+                </div>
+                
+                <h3 class="section-subtitle">保險款：大腸麵線</h3>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <div>
+                            <div class="product-name">大腸麵線（普通碗）</div>
+                            <span class="tag tag-warning">保險款</span>
+                        </div>
+                        <div class="product-price">¥16</div>
+                    </div>
+                    <div class="product-details">台灣紅麵線90g + 預製滷大腸50g + 濃稠勾芡湯頭250ml</div>
+                    <div class="product-metrics">
+                        <div class="metric">食材成本：<span class="metric-value">¥5.05</span></div>
+                        <div class="metric">毛利率：<span class="metric-value">68%</span></div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <div><div class="product-name">大腸麵線（大碗）</div></div>
+                        <div class="product-price">¥21</div>
+                    </div>
+                    <div class="product-details">台灣紅麵線140g + 預製滷大腸80g + 濃稠勾芡湯頭350ml</div>
+                    <div class="product-metrics">
+                        <div class="metric">食材成本：<span class="metric-value">¥7.10</span></div>
+                        <div class="metric">毛利率：<span class="metric-value">66%</span></div>
+                    </div>
+                    <div class="update-note">大腸採用預製加工品，品質穩定、易標準化，利於未來擴張或轉讓</div>
+                </div>
+                
+                <h3 class="section-subtitle">招牌主推：綜合麵線</h3>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <div>
+                            <div class="product-name">綜合麵線（普通碗）</div>
+                            <span class="tag tag-primary">雙享</span>
+                        </div>
+                        <div class="product-price">¥18</div>
+                    </div>
+                    <div class="product-details">台灣紅麵線90g + 蚵仔35g + 大腸35g + 濃稠勾芡湯頭250ml</div>
+                    <div class="product-metrics">
+                        <div class="metric">食材成本：<span class="metric-value">¥5.90</span></div>
+                        <div class="metric">毛利率：<span class="metric-value">67%</span></div>
+                    </div>
+                </div>
+                
+                <div class="product-card flagship">
+                    <div class="product-header">
+                        <div>
+                            <div class="product-name">綜合麵線（大碗）</div>
+                            <span class="tag tag-star">⭐ 招牌主推</span>
+                        </div>
+                        <div class="product-price">¥23</div>
+                    </div>
+                    <div class="product-details">台灣紅麵線140g + 蚵仔50g + 大腸50g + 濃稠勾芡湯頭350ml</div>
+                    <div class="product-metrics">
+                        <div class="metric">食材成本：<span class="metric-value">¥7.90</span></div>
+                        <div class="metric">毛利率：<span class="metric-value">66%</span></div>
+                    </div>
+                    <div style="margin-top: 12px; padding: 10px; background: #fff3e0; border-radius: 6px; font-size: 14px;">
+                        <strong>銷售話術：</strong>「我們招牌是綜合大碗，蚵仔和大腸都給足，很多客人說這個最滿足！」
+                    </div>
+                </div>
+                
+                <h3 class="section-subtitle">加購選項</h3>
+                <div class="card">
+                    <div class="card-content">
+                        <table class="comparison-table">
+                            <tr><th>加購項目</th><th>價格</th><th>份量</th><th>毛利</th></tr>
+                            <tr><td>加麵線</td><td>¥2</td><td>50g</td><td>70%</td></tr>
+                        </table>
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">只保留一個加購選項，簡化點單流程。</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 財務預估 -->
+            <section id="finance" class="section">
+                <h2 class="section-title">四、財務預估</h2>
+                
+                <div class="card">
+                    <div class="card-title">啟動成本（¥99,000）</div>
+                    <div class="card-content">
+                        <div class="metric-row"><span class="metric-label">店鋪相關</span><span class="metric-value-text">¥37,000</span></div>
+                        <p style="font-size: 13px; color: #888; margin-left: 10px; margin-bottom: 10px;">押金¥8,000 + 首月租金¥4,000 + 裝修¥25,000</p>
+                        <div class="metric-row"><span class="metric-label">設備採購</span><span class="metric-value-text">¥23,000</span></div>
+                        <div class="metric-row"><span class="metric-label">物料雜費</span><span class="metric-value-text">¥14,000</span></div>
+                        <div class="metric-row"><span class="metric-label">營銷費用</span><span class="metric-value-text">¥5,000</span></div>
+                        <div class="metric-row"><span class="metric-label">流動資金</span><span class="metric-value-text">¥20,000</span></div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">銷售預估（穩定期）</div>
+                    <div class="card-content">
+                        <table class="comparison-table">
+                            <tr><th>產品</th><th>單價</th><th>日銷量</th><th>佔比</th></tr>
+                            <tr><td>清麵線</td><td>¥10/13</td><td>4碗</td><td>5%</td></tr>
+                            <tr><td>蚵仔麵線（普通）</td><td>¥15</td><td>8碗</td><td>10%</td></tr>
+                            <tr><td>蚵仔麵線（大碗）</td><td>¥19</td><td>12碗</td><td>15%</td></tr>
+                            <tr><td>大腸麵線（普通）</td><td>¥16</td><td>4碗</td><td>5%</td></tr>
+                            <tr><td>大腸麵線（大碗）</td><td>¥21</td><td>8碗</td><td>10%</td></tr>
+                            <tr><td>綜合麵線（普通）</td><td>¥18</td><td>10碗</td><td>12%</td></tr>
+                            <tr style="background: #fff8f5;"><td><strong>綜合麵線（大碗）⭐</strong></td><td><strong>¥23</strong></td><td><strong>34碗</strong></td><td><strong>43%</strong></td></tr>
+                        </table>
+                        <div style="margin-top: 15px; padding: 12px; background: #f8f9fa; border-radius: 6px;">
+                            <div class="metric-row"><span class="metric-label">日均客流</span><span class="metric-value-text">80人</span></div>
+                            <div class="metric-row"><span class="metric-label">平均客單價</span><span class="metric-value-text">¥20.5</span></div>
+                            <div class="metric-row"><span class="metric-label">日營業額</span><span class="metric-value-text">¥1,826</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3 style="margin-bottom: 15px;">穩定期月度損益</h3>
+                    <div class="metric-row"><span class="metric-label">月營業額</span><span class="metric-value-text">¥54,780</span></div>
+                    <div class="metric-row"><span class="metric-label">食材成本（33%）</span><span class="metric-value-text">-¥18,077</span></div>
+                    <div class="metric-row"><span class="metric-label">包裝耗材（4%）</span><span class="metric-value-text">-¥2,191</span></div>
+                    <div class="metric-row"><span class="metric-label">外賣抽成</span><span class="metric-value-text">-¥2,739</span></div>
+                    <div class="metric-row"><span class="metric-label">固定成本</span><span class="metric-value-text">-¥14,000</span></div>
+                    <div class="metric-row" style="padding-top: 12px; border-top: 2px solid #ff6b35; margin-top: 10px;">
+                        <span style="font-weight: 600;">月淨利潤</span>
+                        <span style="font-weight: 700; color: #28a745; font-size: 18px;">¥13,800</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">敏感性分析</div>
+                    <div class="card-content">
+                        <table class="comparison-table">
+                            <tr><th>日均客流</th><th>月營收</th><th>月淨利</th><th>回本週期</th></tr>
+                            <tr><td>50人（悲觀）</td><td>¥34,240</td><td>¥5,020</td><td>20個月</td></tr>
+                            <tr><td>65人（保守）</td><td>¥44,510</td><td>¥9,410</td><td>10.5個月</td></tr>
+                            <tr style="background: #fff3e0;"><td><strong>80人（基準）</strong></td><td><strong>¥54,780</strong></td><td><strong>¥13,800</strong></td><td><strong>7.2個月</strong></td></tr>
+                            <tr><td>100人（樂觀）</td><td>¥68,480</td><td>¥19,660</td><td>5個月</td></tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="delivery-box">
+                    <h3>🛵 外賣定價策略</h3>
+                    <p>外賣標價比堂食高15%，配合滿減讓顧客實付接近堂食價，保護利潤。</p>
+                    <table class="delivery-table">
+                        <tr><th>產品</th><th>堂食價</th><th>外賣標價</th><th>滿減後</th></tr>
+                        <tr><td>清麵線</td><td>¥10/13</td><td>¥12/15</td><td>≈原價</td></tr>
+                        <tr><td>蚵仔麵線</td><td>¥15/19</td><td>¥17/22</td><td>≈原價</td></tr>
+                        <tr><td>大腸麵線</td><td>¥16/21</td><td>¥18/24</td><td>≈原價</td></tr>
+                        <tr><td>綜合麵線⭐</td><td>¥18/23</td><td>¥21/27</td><td>≈原價</td></tr>
+                    </table>
+                    <p style="margin-top: 15px; font-size: 14px;">滿減設置：滿¥20減¥3、滿¥40減¥6。控制外賣佔比25%內。</p>
+                </div>
+            </section>
+            
+            <!-- 運營規劃 -->
+            <section id="operation" class="section">
+                <h2 class="section-title">五、運營規劃</h2>
+                
+                <h3 class="section-subtitle">選址標準</h3>
+                
+                <div class="location-card">
+                    <h4 style="color: #28a745; margin-bottom: 10px;">✅ 必須滿足（紅線）</h4>
+                    <ul>
+                        <li><strong>日人流量500+</strong>（實地蹲點計數）</li>
+                        <li><strong>有午餐客群</strong>：周邊300米內有寫字樓、學校或密集住宅</li>
+                        <li><strong>租金不超過¥5,000/月</strong></li>
+                        <li><strong>基礎條件齊全</strong>：水電燃氣、排煙、排污</li>
+                        <li><strong>證照可辦</strong>：可申請食品經營許可證</li>
+                    </ul>
+                </div>
+                
+                <div class="location-card warning">
+                    <h4 style="color: #856404; margin-bottom: 10px;">⭐ 加分項</h4>
+                    <ul>
+                        <li>50米內有早餐店或便利店</li>
+                        <li>周邊300米內無麵線糊或撈化店</li>
+                        <li>有外擺空間或等位區</li>
+                        <li>臨近公交站/地鐵口</li>
+                    </ul>
+                </div>
+                
+                <div class="location-card danger">
+                    <h4 style="color: #dc3545; margin-bottom: 10px;">🚫 直接放棄</h4>
+                    <ul>
+                        <li>純住宅區底商，白天人流低於200人</li>
+                        <li>美食城檔口抽成超過15%</li>
+                        <li>二樓或負一樓（無獨立入口）</li>
+                        <li>轉讓費超過¥30,000</li>
+                        <li>房東不配合辦證或合同期短於2年</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">人員配置（單店2人）</div>
+                    <div class="card-content">
+                        <p><strong>店長（¥4,500-5,000/月）：</strong>運營、採購、財務</p>
+                        <p><strong>操作員（¥3,500-4,000/月）：</strong>製作、備料、清潔</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">供應鏈</div>
+                    <div class="card-content">
+                        <div class="metric-row"><span class="metric-label">紅麵線</span><span class="metric-value-text">台灣進口，¥12/kg</span></div>
+                        <div class="metric-row"><span class="metric-label">蚵仔</span><span class="metric-value-text">福州本地，¥20-24/kg</span></div>
+                        <div class="metric-row"><span class="metric-label">滷大腸</span><span class="metric-value-text">工廠預製，¥35/kg</span></div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 營銷策略 -->
+            <section id="marketing" class="section">
+                <h2 class="section-title">六、營銷策略</h2>
+                
+                <h3 class="section-subtitle">復購機制</h3>
+                
+                <div class="loyalty-box">
+                    <h3>🎫 大碗暢吃券</h3>
+                    <p style="font-size: 20px; margin: 15px 0;"><strong>¥230 買10送2，共12張</strong></p>
+                    <p>每張可兌換任意大碗麵線，有效期6個月</p>
+                    <div style="margin-top: 15px; padding: 12px; background: rgba(255,255,255,0.15); border-radius: 8px;">
+                        <p><strong>單張等於¥19.2</strong></p>
+                        <p style="font-size: 14px; margin-top: 8px;">
+                            換綜合大碗¥23 → 省¥3.8<br>
+                            換大腸大碗¥21 → 省¥1.8<br>
+                            換蚵仔大碗¥19 → 基本持平
+                        </p>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 14px;">適用：忠實顧客、公司團購、送禮</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">微信社群運營</div>
+                    <div class="card-content">
+                        <p><strong>目標：</strong>建立100-200人顧客微信群</p>
+                        <p style="margin-top: 10px;"><strong>玩法：</strong></p>
+                        <ul>
+                            <li>不定期發暗號福利：「今天報『加量』，免費多加麵線」</li>
+                            <li>新品試吃邀請</li>
+                            <li>節假日專屬優惠</li>
+                        </ul>
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">
+                            <strong>關鍵：</strong>不固定時間，製造驚喜感，不養成等優惠習慣
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">渠道優先級</div>
+                    <div class="card-content">
+                        <div class="metric-row"><span class="metric-label">🥇 第一</span><span class="metric-value-text">美團/大眾點評</span></div>
+                        <div class="metric-row"><span class="metric-label">🥈 第二</span><span class="metric-value-text">抖音</span></div>
+                        <div class="metric-row"><span class="metric-label">🥉 第三</span><span class="metric-value-text">小紅書</span></div>
+                        <div class="metric-row"><span class="metric-label">補充</span><span class="metric-value-text">微信社群</span></div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 風險評估 -->
+            <section id="risk" class="section">
+                <h2 class="section-title">七、風險評估</h2>
+                
+                <div class="card">
+                    <div class="card-title"><span class="tag tag-warning" style="margin-right: 10px;">中</span>紅麵線接受度低於預期</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>開業前試吃測試30人以上</li>
+                            <li>初期提供白麵線選項</li>
+                            <li>如接受度差，3個月後評估調整</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title"><span class="tag tag-danger" style="margin-right: 10px;">高</span>選址失誤導致客流不足</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>嚴格按選址標準評估，不妥協紅線</li>
+                            <li>至少實地蹲點2天確認人流</li>
+                            <li>客流連續3週低於盈虧平衡，啟動止損</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title"><span class="tag tag-danger" style="margin-right: 10px;">高</span>食品安全事故</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>嚴格執行食品安全規範</li>
+                            <li>員工持證上崗</li>
+                            <li>冷鏈運輸，嚴控溫度</li>
+                            <li>購買食品安全責任保險</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 執行時間表 -->
+            <section id="timeline" class="section">
+                <h2 class="section-title">八、執行時間表</h2>
+                
+                <div class="card">
+                    <div class="card-title">階段一：市場驗證（第1-2週）</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>競品調研（5家以上）</li>
+                            <li>供應商對接（3家以上）</li>
+                            <li>試吃測試（30人）+ 價格測試</li>
+                        </ul>
+                        <p style="margin-top: 10px; padding: 10px; background: #fff3e0; border-radius: 4px;">
+                            <strong>驗收：</strong>好評率≥70%，價格接受度≥60%
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">階段二：籌備開業（第3-8週）</div>
+                    <div class="card-content">
+                        <div class="metric-row"><span class="metric-label">第3-4週</span><span class="metric-value-text">選址、證照</span></div>
+                        <div class="metric-row"><span class="metric-label">第5-6週</span><span class="metric-value-text">裝修、設備</span></div>
+                        <div class="metric-row"><span class="metric-label">第7週</span><span class="metric-value-text">人員、物料</span></div>
+                        <div class="metric-row"><span class="metric-label">第8週</span><span class="metric-value-text">試營運</span></div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">階段三：運營發展（第9週起）</div>
+                    <div class="card-content">
+                        <div class="metric-row"><span class="metric-label">第9週</span><span class="metric-value-text">正式開業</span></div>
+                        <div class="metric-row"><span class="metric-label">第10-12週</span><span class="metric-value-text">爬坡期，目標60-70人/日</span></div>
+                        <div class="metric-row"><span class="metric-label">第13-26週</span><span class="metric-value-text">穩定期，目標80人/日</span></div>
+                        <div class="metric-row"><span class="metric-label">第27-52週</span><span class="metric-value-text">發展期，準備第二店</span></div>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3 style="margin-bottom: 10px;">第2-3年發展規劃</h3>
+                    <p><strong>第2年：</strong>開設3-5家直營店</p>
+                    <p><strong>第3年：</strong>達到8-10家，評估發展路徑</p>
+                    <p style="margin-top: 10px; font-size: 14px; color: #666;">
+                        路徑選項：繼續擴張、引入資本、或品牌轉讓
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        (function() {
+            var links = document.querySelectorAll('.nav-link');
+            for (var i = 0; i < links.length; i++) {
+                links[i].onclick = function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('data-target');
+                    var targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        var navHeight = 60;
+                        window.scrollTo({ top: targetSection.offsetTop - navHeight, behavior: 'smooth' });
+                        for (var j = 0; j < links.length; j++) { links[j].classList.remove('active'); }
+                        this.classList.add('active');
+                    }
+                };
+            }
+            if (links.length > 0) { links[0].classList.add('active'); }
+        })();
+    </script>
+</body>
+</html>
